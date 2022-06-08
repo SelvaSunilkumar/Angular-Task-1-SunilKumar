@@ -13,7 +13,14 @@
                 <div class="col-5">
                     <div class="profile-detail">
                         <span class="profile-title">Name</span>
-                        <span class="profile-info"> {{ profile.name }} </span>
+                        <div class="row">
+                            <div class="col-10">
+                                <input class="form-control form-control-sm" type="text" ng-value="profile.name" ng-model="profile.name">
+                            </div>
+                            <div class="col-2">
+                                <button class="btn btn-sm" ng-click="editProfileName()"><i class="fa fa-pencil"></i></button>
+                            </div>
+                        </div>
                     </div>
                     <div class="profile-detail">
                         <span class="profile-title">Emp Id</span>

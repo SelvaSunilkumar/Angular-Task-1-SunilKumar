@@ -8,7 +8,7 @@ app.component('navLinks', {
                 '<li class="nav-item">'+
                     '<a class="nav-link" href="#/add/profile">Add Profile</a>'+
                 '</li>'+
-           ' </ul>'
+            '</ul>'
 });
 
 app.config(['$routeProvider', function($routeProvider) {
@@ -24,35 +24,36 @@ app.config(['$routeProvider', function($routeProvider) {
     });
 }]);
 
-app.controller('all-profile', ['$scope', '$http', function($scope, $http) {
+app.controller('all-profile', ['$scope', 'requestService', function($scope, requestService) {
     $scope.profiles = null;
-    $http.get("http://localhost:3000/profiles").success(function(response) {
-        $scope.profiles = response;
+    requestService.getAllProfile().then(function(response) {
+        $scope.profiles = response.data;
     });
 }]);
 
-app.controller('my-profile', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
+app.controller('my-profile', ['$scope', '$routeParams', 'requestService', function($scope, $routeParams, requestService) {
     $scope.profile = null;
     let empId = $routeParams.empId;
     console.log(empId);
-    $http.get("http://localhost:3000/profiles/" + empId).success(function(response) {
-        $scope.profile = response;
+    requestService.getEmployeeProfile(empId).then(function(response) {
+        $scope.profile = response.data;
     });
+
+    $scope.editProfileName = function() {
+        requestService.editEmployeeProfileName($scope.profile, empId).then(function(response) {
+            console.log(response);
+        });
+    }
 }]);    
 
-app.controller('add-profile', ['$scope', '$http', function($scope, $http) {
+app.controller('add-profile', ['$scope', 'requestService', function($scope, requestService) {
 
     $scope.addProfile = function() {
         if ($scope.profile.id.length < 7) {
             alert("Emp Id : Low number of letters");
             return;
         }
-        
-        console.log("submiting");
-        let profileData = $scope.profile;
-        $http.post("http://localhost:3000/profiles", profileData).success(function(response) {
-            console.log(response);
-        });
+        requestService.addEmployeeProfile($scope.profile).then(function(response) { console.log(response); });
     }
 
 }]);

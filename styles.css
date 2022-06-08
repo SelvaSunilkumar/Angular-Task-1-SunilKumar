@@ -13,10 +13,12 @@
 }
 .profile-detail .profile-title {
   font-size: 13px;
+  color: red;
 }
 .profile-detail .profile-title .profile-info {
   font-size: 16px;
   font-weight: bold;
+  color: #ccc;
 }
 
 /*# sourceMappingURL=styles.css.map */
