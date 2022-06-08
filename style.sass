@@ -1,0 +1,22 @@
+@function height($value)
+    $result : 1
+    $result : $result * $value
+    @return $result
+
+@mixin profileDetail
+    display: flex
+    flex-direction: column
+    padding: 10px 0px 5px 0px
+.profile-pic
+    text-align: center
+    .profile-img
+        height: height(125) * 1px
+        border-radius: 50%
+
+.profile-detail
+    @include profileDetail
+    .profile-title
+        font-size: 13px
+        .profile-info
+            font-size: 16px
+            font-weight: bold

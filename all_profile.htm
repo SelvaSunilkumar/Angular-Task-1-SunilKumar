@@ -1,0 +1,35 @@
+<div class="container" ng-controller="all-profile">
+    <h3>Profiles</h3>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col-1">#</th>
+                            <th scope="col" class="col-6">Name</th>
+                            <th scope="col" class="col-3">Emp Id</th>
+                            <th scope="col" class="col-1"></th>
+                            <th scope="col" class="col-1"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="profile in profiles track by $index">
+                            <td> {{ $index + 1 }} </td>
+                            <td> {{ profile.name | uppercase }} </td>
+                            <td> {{ profile.id }} </td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button>
+                            </td>
+                            <td><a ng-href="#/profile/{{ profile.id }}">Profile</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
