@@ -1,15 +1,24 @@
 var app = angular.module('taskOne', ['ngRoute']);
 
-app.component('navLinks', {
-    template: '<ul class="nav justify-content-center">' +
-                '<li class="nav-item"> '+
-                    '<a class="nav-link" href="#/all-profile">All Profiles</a>'+
-                '</li>'+
-                '<li class="nav-item">'+
-                    '<a class="nav-link" href="#/add/profile">Add Profile</a>'+
-                '</li>'+
-            '</ul>'
-});
+app.run(['$rootScope', '$location', 'requestService', '$routeParams', function($rootScope, $location, requestService, $routeParams) {
+    $rootScope.$on('$routeChangeStart', function(event, current) {
+        //current.$$route.withAccess = false;
+        if (current.$$route.withAccess) {
+            let empId = $routeParams.empId;
+            let locationUrl = $location.path();
+            let locationPaths = locationUrl.split('/');
+            console.log(locationPaths[2]);
+            requestService.getEmployeeProfile(locationPaths[2]).then(function(response) {
+                if (response === null) {
+                    event.preventDefault();
+                    $location.path('/');
+                } 
+            });
+            /*event.preventDefault();
+            $location.path('/');*/
+        }
+    });
+}]);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/all-profile', {
@@ -17,7 +26,8 @@ app.config(['$routeProvider', function($routeProvider) {
         controller:'all-profile'
     }).when('/profile/:empId', {
         templateUrl:'my-profile.htm',
-        controller:'my-profile'
+        controller:'my-profile',
+        withAccess: true
     }).when('/add/profile', {
         templateUrl:'add-profile.htm',
         controller:'add-profile'

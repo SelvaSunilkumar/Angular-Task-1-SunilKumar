@@ -22,41 +22,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="profile-detail">
-                        <span class="profile-title">Emp Id</span>
-                        <span class="profile-info"> {{ profile.id }} </span>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="profile-title">Account</span>
-                        <span class="profile-info"> {{ profile.account }} </span>
-                    </div>
+                    <profile-info value="profile.id" name="Emp Id"></profile-info>
+                    <profile-info value="profile.account" name="Account"></profile-info>
+                    
                 </div>
             </div>
             <hr>
             <div class="row card-body">
                 <div class="col-md-6">
-                    <div class="profile-detail">
-                        <span class="profile-title">Email id</span>
-                        <span class="profile-info"> {{ profile.emailid }} </span>
-                    </div>
+                    <profile-info value="profile.emailid" name="Email Id"></profile-info>
                 </div>
                 <div class="col-md-6">
-                    <div class="profile-detail">
-                        <span class="profile-title">Office Location</span>
-                        <span class="profile-info"> {{ profile.officelocation }} </span>
-                    </div>
+                    <profile-info value="profile.officelocation" name="Office Location"></profile-info>
                 </div>
                 <div class="col-md-6">
-                    <div class="profile-detail">
-                        <span class="profile-title">Role</span>
-                        <span class="profile-info"> {{ profile.role }} </span>
-                    </div>
+                    <profile-info value="profile.role" name="Role"></profile-info>
                 </div>
                 <div class="col-md-6">
-                    <div class="profile-detail">
-                        <span class="profile-title">Contact Number</span>
-                        <span class="profile-info"> {{ profile.contact }} </span>
-                    </div>
+                    <profile-info value="profile.contact" name="Contact Number"></profile-info>
                 </div>
             </div>
         </div>
