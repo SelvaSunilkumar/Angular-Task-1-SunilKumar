@@ -5,49 +5,56 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 shadow card-body">
-            <form ng-submit="addProfile()">
+            <form ng-submit="addProfile()" name="form">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="" class="form-label">Employee Id</label>
-                            <input type="text" class="form-control" id="" placeholder="INT1250" ng-model="profile.id" required>
+                            <label for="" class="form-label">Employee Id {{ employee.profile.id.$valid }} <span ng-show="employee.profile.id.$invalid">Hi</span></label>
+                            <input type="text" class="form-control" name="id" placeholder="INT1250" ng-model="profile.id" ng-required="true">
+                            <input-warning ng-show="form.id.$touched && form.id.$error.required" message="Missing Employee Id"></input-warning>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="" class="form-label">Employee Name</label>
-                            <input type="text" class="form-control" id="" placeholder="Sunil Kumar S" ng-model="profile.name" required>
+                            <input type="text" class="form-control" name="name" placeholder="Sunil Kumar S" ng-model="profile.name" required>
+                            <input-warning ng-show="form.name.$touched && form.name.$error.required" message="Missing Employee Name"></input-warning>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="mb-3">
                             <label for="" class="form-label">Employee Email Id</label>
-                            <input type="text" class="form-control" id="" placeholder="sunil.s@accolitedigital.com" ng-model="profile.emailid" required>
+                            <input type="text" class="form-control" name="mailId" placeholder="sunil.s@accolitedigital.com" ng-model="profile.emailid" required>
+                            <input-warning ng-show="form.mailId.$touched && form.mailId.$error.required" message="Missing Employee Mail Id"></input-warning>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label for="" class="form-label">Account</label>
-                            <input type="text" class="form-control" id="" placeholder="Turvo" ng-model="profile.account" required>
+                            <input type="text" class="form-control" name="account" placeholder="Turvo" ng-model="profile.account" required>
+                            <input-warning ng-show="form.account.$touched && form.account.$error.required" message="Missing Employee Working Account"></input-warning>
                         </div>
                     </div>
     
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label for="" class="form-label">Location</label>
-                            <input type="text" class="form-control" id="" placeholder="Chennai"  ng-model="profile.officelocation" required>
+                            <input type="text" class="form-control" name="location" placeholder="Chennai"  ng-model="profile.officelocation" required>
+                            <input-warning ng-show="form.location.$touched && form.location.$error.required" message="Missing Employee location"></input-warning>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label for="" class="form-label">Contact Number</label>
-                            <input type="text" class="form-control" id="" placeholder="9443083277"  ng-model="profile.contact" required>
+                            <input type="text" class="form-control" name="contact" placeholder="9443083277"  ng-model="profile.contact" required>
+                            <input-warning ng-show="form.contact.$touched && form.contact.$error.required" message="Missing Employee Contact Number"></input-warning>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label for="" class="form-label">Role</label>
-                            <input type="text" class="form-control" id="" placeholder="Intern"  ng-model="profile.role" required>
+                            <input type="text" class="form-control" name="role" placeholder="Intern"  ng-model="profile.role" required>
+                            <input-warning ng-show="form.role.$touched && form.role.$error.required" message="Missing Employee Role"></input-warning>
                         </div>
                     </div>
                 </div>

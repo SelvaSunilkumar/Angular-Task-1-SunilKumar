@@ -15,10 +15,10 @@
                         <span class="profile-title">Name</span>
                         <div class="row">
                             <div class="col-10">
-                                <input class="form-control form-control-sm" type="text" ng-value="profile.name" ng-model="profile.name">
+                                <input class="form-control form-control-sm bg-transparent" type="text" ng-value="profile.name" ng-model="profile.name" ng-readonly="!editField">
                             </div>
                             <div class="col-2">
-                                <button class="btn btn-sm" ng-click="editProfileName()"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-sm" ng-click="editInputField()"><i class="fa fa-pencil"></i></button>
                             </div>
                         </div>
                     </div>
@@ -41,6 +41,9 @@
                 <div class="col-md-6">
                     <profile-info value="profile.contact" name="Contact Number"></profile-info>
                 </div>
+            </div>
+            <div class="card-footer bg-transparent text-end">
+                <button class="btn btn-sm btn-outline-primary" ng-click="editProfileName()" ng-disabled="!editField">Save Changes</button>
             </div>
         </div>
         <div class="col-3"></div>

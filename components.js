@@ -19,3 +19,12 @@ app.component('profileInfo', {
         name : '@'
     }
 });
+
+app.component('inputWarning', {
+    template: '<span class="input-warning">' +
+                    '** {{ $ctrl.message }}' +
+                '</span>',
+    bindings: {
+        message : '@'
+    }
+});
