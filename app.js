@@ -2,7 +2,6 @@ var app = angular.module('taskOne', ['ngRoute']);
 
 app.run(['$rootScope', '$location', 'requestService', '$routeParams', function($rootScope, $location, requestService, $routeParams) {
     $rootScope.$on('$routeChangeStart', function(event, current) {
-        //current.$$route.withAccess = false;
         if (current.$$route.withAccess) {
             let empId = $routeParams.empId;
             let locationUrl = $location.path();
@@ -14,8 +13,6 @@ app.run(['$rootScope', '$location', 'requestService', '$routeParams', function($
                     $location.path('/');
                 } 
             });
-            /*event.preventDefault();
-            $location.path('/');*/
         }
     });
 }]);
@@ -43,8 +40,12 @@ app.controller('all-profile', ['$scope', 'requestService', function($scope, requ
 
 app.controller('my-profile', ['$scope', '$routeParams', 'requestService', '$q', function($scope, $routeParams, requestService, $q) {
     $scope.profile = null;
-    let editField = false;
+
+    $scope.status = "Active";
+    $scope.statusClass = "text-success";
+
     let empId = $routeParams.empId;
+
     console.log(empId);
     requestService.getEmployeeProfile(empId).then(function(response) {
         $scope.profile = response.data;
@@ -66,16 +67,20 @@ app.controller('my-profile', ['$scope', '$routeParams', 'requestService', '$q', 
     $scope.editProfileName = function() {
         verifyName($scope.profile.name)
             .then(function(response) {
-                requestService.editEmployeeProfileName($scope.profile, empId).then(function(response) {
-                    console.log(response);
-                });
+                $scope.status = "Editing";
+                $scope.statusClass = "text-warning";
+                setTimeout(function() {
+                    requestService.editEmployeeProfileName($scope.profile, empId).then(function(response) {
+                        console.log(response);
+                        $scope.status = "Active";
+                        $scope.statusClass = "text-success";
+                    });
+                }, 2000);
+                
             })
             .catch(function(failure) {
                 console.log(failure)
             });
-        /*requestService.editEmployeeProfileName($scope.profile, empId).then(function(response) {
-            console.log(response);
-        });*/
     }
 }]);    
 
