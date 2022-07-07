@@ -1,0 +1,19 @@
+{
+  "name": "angular",
+  "version": "1.0.0",
+  "description": "Sample Webpack App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SelvaSunilkumar/Angular-Task-1-SunilKumar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SelvaSunilkumar/Angular-Task-1-SunilKumar/issues"
+  },
+  "homepage": "https://github.com/SelvaSunilkumar/Angular-Task-1-SunilKumar#readme"
+}

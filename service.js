@@ -1,5 +1,4 @@
-app.service("requestService", ['$http',function($http) {
-    
+app.service("requestService", ['$http',function($http) {   
     this.getAllProfile = function() {
         return $http.get("http://localhost:3000/profiles").success(function(response) {
             return response;
@@ -9,6 +8,8 @@ app.service("requestService", ['$http',function($http) {
     this.getEmployeeProfile = function(empId) {
         return $http.get("http://localhost:3000/profiles/" + empId).success(function(response) {
             return response;
+        }).catch(function(response) {
+            return null;
         });
     }
 
@@ -23,5 +24,4 @@ app.service("requestService", ['$http',function($http) {
             console.log(response);
         });
     }
-
 }]);
